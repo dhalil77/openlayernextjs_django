@@ -1,0 +1,39 @@
+repos:
+  # 🔒 Bandit - Sécurité du code Python
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.4
+    hooks:
+      - id: bandit
+        args: ["-r", "."]
+        exclude: 'tests/|migrations/'
+
+  # 🎨 Black - Formatage automatique du code
+  - repo: https://github.com/psf/black
+    rev: 24.4.0
+    hooks:
+      - id: black
+        language_version: python3
+
+  # 🧹 isort - Tri automatique des imports
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.12.0
+    hooks:
+      - id: isort
+        name: isort (python)
+        language_version: python3
+
+  # 🧪 Flake8 - Linting (PEP8 + erreurs classiques)
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        additional_dependencies: [flake8-django]
+        language_version: python3
+
+  # 🧹 End of file fixer, trailing whitespace, etc.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-added-large-files
